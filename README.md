@@ -24,7 +24,7 @@ A modular skeleton for an analog-feeling family newspaper web app.
 Serve the repo as static files (example):
 
 ```bash
-cd /home/runner/work/schnoos_news_2/schnoos_news_2
+cd /path/to/project
 python3 -m http.server 8080
 ```
 

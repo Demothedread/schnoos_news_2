@@ -1,6 +1,7 @@
 import { normalizeSubmission } from "../cms/formInbox.js";
 import { enqueueSubmission, releaseScheduled } from "../cms/articleQueue.js";
 import { publishReadySubmissions } from "../publish/publisher.js";
+import { getISODateToday } from "../utils/date.js";
 import { renderPublished, renderQueue } from "./render.js";
 
 export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl, articleTemplateEl }) => {
@@ -9,10 +10,10 @@ export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl,
 
     const formData = new FormData(formEl);
     const submission = normalizeSubmission({
-      contributor: formData.get("contributor") || formEl.querySelector("#contributor").value,
-      children: formData.get("children") || formEl.querySelector("#children").value,
-      notes: formData.get("notes") || formEl.querySelector("#notes").value,
-      publishDate: formData.get("publishDate") || formEl.querySelector("#publish-date").value
+      contributor: String(formData.get("contributor")),
+      childNames: String(formData.get("childNames")),
+      notes: String(formData.get("notes")),
+      publishDate: String(formData.get("publishDate"))
     });
 
     enqueueSubmission(submission);
@@ -21,7 +22,7 @@ export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl,
   });
 
   publishEl.addEventListener("click", () => {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getISODateToday();
     const ready = releaseScheduled(today);
     publishReadySubmissions(ready);
 

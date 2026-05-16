@@ -11,7 +11,7 @@ export const renderQueue = (queueEl) => {
 
   queue.forEach((entry) => {
     const li = document.createElement("li");
-    li.textContent = `${entry.publishDate} · ${entry.children} (${entry.contributor})`;
+    li.textContent = `${entry.publishDate} · ${entry.childNames} (${entry.contributor})`;
     queueEl.append(li);
   });
 };
@@ -25,11 +25,25 @@ export const renderPublished = (containerEl, articleTemplate) => {
     return;
   }
 
+  if (!(articleTemplate instanceof HTMLTemplateElement)) {
+    console.warn("Published article template is missing or invalid.");
+    return;
+  }
+
   published.forEach((article) => {
     const node = articleTemplate.content.cloneNode(true);
-    node.querySelector("h3").textContent = article.headline;
-    node.querySelector(".byline").textContent = article.byline;
-    node.querySelector(".body").textContent = article.body;
+    const headlineEl = node.querySelector("h3");
+    const bylineEl = node.querySelector(".byline");
+    const bodyEl = node.querySelector(".body");
+
+    if (!headlineEl || !bylineEl || !bodyEl) {
+      console.warn("Published article template is missing required elements.");
+      return;
+    }
+
+    headlineEl.textContent = article.headline;
+    bylineEl.textContent = article.byline;
+    bodyEl.textContent = article.body;
     containerEl.append(node);
   });
 };

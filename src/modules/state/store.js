@@ -21,7 +21,11 @@ const readState = () => {
 let state = readState();
 
 const persist = () => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.warn("Unable to persist Schnoos News state.", error);
+  }
 };
 
 export const getState = () => state;
