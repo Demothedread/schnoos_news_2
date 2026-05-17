@@ -2,9 +2,10 @@ import { normalizeSubmission } from "../cms/formInbox.js";
 import { enqueueSubmission, releaseScheduled } from "../cms/articleQueue.js";
 import { publishReadySubmissions } from "../publish/publisher.js";
 import { getISODateToday } from "../utils/date.js";
+import { saveComingUpThisMonth } from "./monthlyPlanner.js";
 import { renderPublished, renderQueue } from "./render.js";
 
-export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl, articleTemplateEl }) => {
+export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl, articleTemplateEl, comingUpTextEl, saveComingUpEl }) => {
   formEl.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -28,5 +29,9 @@ export const bindUiEvents = ({ formEl, queueEl, publishEl, publishedContainerEl,
 
     renderQueue(queueEl);
     renderPublished(publishedContainerEl, articleTemplateEl);
+  });
+
+  saveComingUpEl.addEventListener("click", () => {
+    saveComingUpThisMonth(comingUpTextEl.value);
   });
 };

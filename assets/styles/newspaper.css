@@ -71,13 +71,15 @@ label {
 
 input,
 textarea,
-button {
+button,
+select {
   font: inherit;
   color: var(--ink);
 }
 
 input,
-textarea {
+textarea,
+select {
   margin-top: 0.2rem;
   border: 1px solid #a69a85;
   background: #fffdf7;
@@ -92,6 +94,21 @@ button {
 }
 
 button:hover {
+  background: #eed7ae;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  background: #f4e5ca;
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.button-link:hover {
   background: #eed7ae;
 }
 
@@ -137,4 +154,24 @@ button:hover {
 
 .paper-article .body {
   margin: 0;
+}
+
+.template-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+#email-template-body {
+  width: 100%;
+  min-height: 18rem;
+  margin-bottom: 0.75rem;
+}
+
+#coming-up-text {
+  width: 100%;
+}
+
+.span-all {
+  grid-column: 1 / -1;
 }

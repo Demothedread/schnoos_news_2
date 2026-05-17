@@ -2,7 +2,8 @@ const STORAGE_KEY = "schnoos-news-state";
 
 const defaultState = {
   queue: [],
-  published: []
+  published: [],
+  comingUpThisMonth: ""
 };
 
 const readState = () => {

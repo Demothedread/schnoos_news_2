@@ -9,6 +9,13 @@ A modular skeleton for an analog-feeling family newspaper web app.
 - **CMS queue module** that stores scheduled stories.
 - **AI article generation module** (scaffold) that drafts publishable stories from form notes.
 - **Start Press Run control** that publishes due stories to the front page.
+- **Email-ready submission templates** for:
+  - News to Report (simple language)
+  - Grown-Up Profile (20 questions)
+  - Recipe of the Month (ingredients + steps)
+  - My One Big Idea
+  - My Sibling Says (20 questions)
+- **Coming Up This Month** planner space for birthdays, holidays, and major family events.
 - **Local persistence** with `localStorage` to keep queue/published content between refreshes.
 
 ## Module layout
@@ -18,6 +25,7 @@ A modular skeleton for an analog-feeling family newspaper web app.
 - `src/modules/publish`: publish workflow
 - `src/modules/ui`: rendering + event wiring
 - `src/modules/state`: app state and persistence
+- `src/modules/utils`: shared date helpers
 
 ## Run locally
 

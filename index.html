@@ -51,6 +51,28 @@
         <h2>Published Front Page</h2>
         <div id="published-articles" class="columns"></div>
       </section>
+
+      <section class="panel template-panel span-all">
+        <h2>Email Templates</h2>
+        <label>
+          Template Type
+          <select id="email-template-select"></select>
+        </label>
+        <textarea id="email-template-body" rows="18" readonly></textarea>
+        <div class="template-actions">
+          <button type="button" id="copy-template">Copy Template</button>
+          <a id="email-template-link" class="button-link" href="#" target="_blank" rel="noopener noreferrer">Open Email Draft</a>
+        </div>
+      </section>
+
+      <section class="panel month-panel span-all">
+        <h2>Coming Up This Month</h2>
+        <label>
+          Birthdays, holidays, and big family moments
+          <textarea id="coming-up-text" rows="7" placeholder="Add upcoming birthdays, holidays, trips, school events, or other family highlights for this month."></textarea>
+        </label>
+        <button type="button" id="save-coming-up">Save This Month</button>
+      </section>
     </main>
 
     <template id="article-template">
